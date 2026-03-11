@@ -1,0 +1,54 @@
+name: Test
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+jobs:
+  test-check:
+    name: runner / staticcheck (github-check)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-go@v6
+        with:
+          go-version-file: "testdata/go.mod"
+      - uses: ./
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-check
+          level: info
+          target: ./testdata/
+
+  test-pr-review:
+    if: github.event_name == 'pull_request'
+    name: runner / staticcheck (github-pr-review)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-go@v6
+        with:
+          go-version-file: "testdata/go.mod"
+      - uses: ./
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review
+          level: error
+          workdir: ./testdata
+          reviewdog_flags: -filter-mode=file
+
+  test-go-install:
+    name: runner / staticcheck (use_go_install)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-go@v6
+        with:
+          go-version-file: "testdata/go.mod"
+      - uses: ./
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-check
+          level: info
+          workdir: ./testdata
+          use_go_install: true
