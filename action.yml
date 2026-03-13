@@ -93,7 +93,7 @@ runs:
           fi
         fi
       shell: bash
-    - uses: step-security/reviewdog-action-setup@v1
+    - uses: step-security/reviewdog-action-setup@34978e80c2c2b35bc0faf32a6dd993fd7dadc7ba # v1.4.0
       with:
         reviewdog_version: v0.20.3
     - run: $GITHUB_ACTION_PATH/script.sh

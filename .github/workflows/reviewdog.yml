@@ -10,8 +10,13 @@ jobs:
     name: runner / shellcheck
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: step-security/action-cond@v1
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@58077d3c7e43986b6b15fba718e8ea69e387dfcc # v2.15.1
+        with:
+          egress-policy: audit
+
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: step-security/action-cond@45aa5a709bd075f11c74285d8b0ca4d527e5fbcf # v1.2.4
         id: reporter
         with:
           cond: ${{ github.event_name == 'pull_request' }}
@@ -27,8 +32,13 @@ jobs:
     name: runner / misspell
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: step-security/action-misspell@v1
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@58077d3c7e43986b6b15fba718e8ea69e387dfcc # v2.15.1
+        with:
+          egress-policy: audit
+
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: step-security/action-misspell@185febccfc9a0598c17a34b579cc7e64a54afc6d # v1.27.1
         with:
           github_token: ${{ secrets.github_token }}
           reporter: github-check
