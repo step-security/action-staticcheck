@@ -93,9 +93,9 @@ runs:
           fi
         fi
       shell: bash
-    - uses: step-security/reviewdog-action-setup@34978e80c2c2b35bc0faf32a6dd993fd7dadc7ba # v1.4.0
+    - uses: step-security/reviewdog-action-setup@b1f87f03454fcd701e2e4d2052fd711139bd1119 # v1.5.0
       with:
-        reviewdog_version: v0.20.3
+        reviewdog_version: v0.21.0
     - run: $GITHUB_ACTION_PATH/script.sh
       shell: bash
       env:
