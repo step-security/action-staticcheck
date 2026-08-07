@@ -85,5 +85,5 @@ jobs:
           # Report all results.
           filter_mode: nofilter
           # Exit with 1 when it find at least one finding.
-          fail_on_error: true
+          fail_level: error
 ```
