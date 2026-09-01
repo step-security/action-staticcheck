@@ -1,0 +1,18 @@
+{
+   "schema_version": "1",
+   "onboarding_type": "copied",
+   "archived": false,
+   "maintained_action_name": "step-security/action-staticcheck",
+   "upstream_full_repo_name": "reviewdog/action-staticcheck",
+   "action_type": "composite",
+   "last_release": {
+     "tag_name": "v1.28.0",
+     "created_at": "2026-03-13T05:49:47Z",
+     "published_at": "2026-03-16T04:11:09Z"
+   },
+   "sync": {
+     "ignore_presets": [
+       "defaults_v1"
+     ]
+   }
+ }
