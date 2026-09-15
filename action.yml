@@ -95,7 +95,7 @@ runs:
       shell: bash
     - uses: step-security/reviewdog-action-setup@b1f87f03454fcd701e2e4d2052fd711139bd1119 # v1.5.0
       with:
-        reviewdog_version: v0.21.0
+        reviewdog_version: v0.21.1
     - run: $GITHUB_ACTION_PATH/script.sh
       shell: bash
       env:
